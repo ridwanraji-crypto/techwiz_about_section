@@ -17,6 +17,7 @@
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -24,23 +25,108 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #3498db;
+            background: white;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
+            margin-bottom: 40px;
         }
         
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 30px;
+            animation: fadeIn 1.5s ease-in;
         }
         
         .btn {
@@ -52,6 +138,9 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            animation: fadeIn 2s ease-in;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
@@ -119,12 +208,111 @@
             flex: 1;
             min-width: 300px;
             text-align: center;
+            position: relative;
         }
         
         .about-image img {
             max-width: 100%;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 200px;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .team-member:hover .member-img img {
+            transform: scale(1.1);
+        }
+        
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .member-info h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size:medium;
+        }
+        
+        .member-info p {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
          /* Footer */
@@ -169,8 +357,14 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .about-content {
                 flex-direction: column;
             }
@@ -180,8 +374,36 @@
                 margin-bottom: 40px;
             }
             
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: #2c3e50;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transform: translateX(-100%);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
             }
             
             .hero h1 {
@@ -191,10 +413,75 @@
             .hero p {
                 font-size: 1rem;
             }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-text h3 {
+                font-size: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-laptop-code"></i>
+                    Tech Wiz
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> 
 
     <!-- Hero Section -->
     <section class="hero">
@@ -217,10 +504,135 @@
                     <p>Tech Wiz is a team of passionate full-stack developers dedicated to creating responsive, user-friendly web applications that make a difference. With years of experience in the industry, we've mastered the art of blending creativity with technical expertise.</p>
                     <p>Our mission is to help businesses and entrepreneurs transform their ideas into powerful digital solutions. We believe in clean code, intuitive design, and seamless user experiences.</p>
                     <p>What sets us apart is our commitment to innovation and excellence. We stay ahead of industry trends and continuously update our skills to deliver cutting-edge solutions that drive success for our clients.</p>
-                    <a href="#" class="btn">Our Services</a>
+                    <a href="service.html" class="btn">Our Services</a>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tech Wiz Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+            </div>
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/pi.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Tiamiyu Peter Moyosoreoluwa</h3>
+                        <p>Full Stack Web Developer</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/ola.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Olaosegba Olamide</h3>
+                        <p>Data Analyst</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/gebu.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dada Gabriel</h3>
+                        <p>Data Scientis</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/of.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Olofinlade Temiloluwa</h3>
+                        <p>Cybersecurity Analyst</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/ore.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Oreoluwa Olaniyi</h3>
+                        <p>Motion Graphics</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/cs.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Oseji Caleb</h3>
+                        <p>Web Developer</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/ft.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sunday Faith</h3>
+                        <p>Frontend Developer</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/in.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dada Inioluwa Joy</h3>
+                        <p>Social Media Manager</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/tm.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Oloyede Tomiwa</h3>
+                        <p>Backend Developer</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="images/rn.jpeg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Ridwan</h3>
+                        <p>Fullstack Web Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-text">Client Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-text">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-text">Team Members</div>
                 </div>
             </div>
         </div>
@@ -240,5 +652,45 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Change icon based on menu state
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>
